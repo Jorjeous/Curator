@@ -13,12 +13,19 @@
 # limitations under the License.
 
 """
-NeMo Curator Audio Processing Stages.
+Audio curation stages for NeMo Curator.
 
-Preprocessing:
-    - MonoConversionStage: Convert multi-channel audio to mono
-    - SegmentConcatenationStage: Concatenate audio segments
+This module provides stages for processing and curating audio data,
+including ASR inference, quality assessment, and ALM data preparation.
 """
+
+from nemo_curator.stages.audio.alm import ALMDataBuilderStage, ALMDataOverlapStage
+
+from nemo_curator.stages.audio.common import (
+    GetAudioDurationStage,
+    LegacySpeechStage,
+    PreserveByValueStage,
+)
 
 from nemo_curator.stages.audio.preprocessing import (
     MonoConversionStage,
@@ -36,10 +43,14 @@ from nemo_curator.stages.audio.configs import (
 )
 
 __all__ = [
+    "ALMDataBuilderStage",
+    "ALMDataOverlapStage",
+    "GetAudioDurationStage",
+    "LegacySpeechStage",
     "MonoConversionStage",
+    "PreserveByValueStage",
     "SegmentConcatenationStage",
     "TimestampMapperStage",
     "MonoConversionConfig",
     "SegmentConcatenationConfig",
     "TimestampMapperConfig",
-]
